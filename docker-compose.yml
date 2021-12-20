@@ -1,8 +1,8 @@
 version: "3"
 
 networks:
- kong-net:
-  driver: bridge
+  kong-net:
+    driver: bridge
 
 services:
 
@@ -21,7 +21,7 @@ services:
     ports:
       - "5432:5432"
     healthcheck:
-      test: ["CMD", "pg_isready", "-U", "kong"]
+      test: [ "CMD", "pg_isready", "-U", "kong" ]
       interval: 5s
       timeout: 5s
       retries: 5
@@ -65,7 +65,7 @@ services:
     depends_on:
       - kong-database
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://kong:8001"]
+      test: [ "CMD", "curl", "-f", "http://kong:8001" ]
       interval: 5s
       timeout: 2s
       retries: 15
@@ -89,17 +89,5 @@ services:
       - DB_USER=kong
       - DB_PASSWORD=kong
       - DB_DATABASE=kong
-
-  # konga-dashboard:
-  #   build: .
-  #   container_name: konga-dashboard
-  #   networks:
-  #     - kong-net
-  #   ports:
-  #     - 7000:1337
-  #   volumes:
-  #     - /app/kongadata
-  #   depends_on:
-  #     kong:
-  #       condition: service_healthy
-  #   entrypoint: ./start.sh
+      - TOKEN_SECRET=f+TG0q1Z)#%D@06LyI)To0F4(51(a$k+MPZNM_FDYan=w&9g
+      - NODE_ENV=production
