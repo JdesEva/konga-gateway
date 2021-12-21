@@ -53,7 +53,7 @@
     "sails-sqlserver": "^0.10.8",
     "sendmail": "^1.6.1",
     "socket.io-redis": "~1.0.0",
-    "unirest": "git+https://git@github.com/pantsel/unirest-nodejs.git#master",
+    "unirest": "^0.6.0",
     "uuid": "^3.4.0",
     "validator": "13.7.0"
   },
@@ -64,10 +64,12 @@
     "supertest": "1.1.0"
   },
   "scripts": {
+    "postinstall": "bower --allow-root install",
     "start": "node --harmony app.js",
     "production": "node --harmony app.js --prod",
     "debug": "node debug app.js",
-    "test": "mocha"
+    "test": "mocha",
+    "bower-deps": "bower --allow-root install"
   },
   "main": "app.js",
   "repository": {
